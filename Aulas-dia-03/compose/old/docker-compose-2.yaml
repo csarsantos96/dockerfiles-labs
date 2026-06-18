@@ -1,0 +1,21 @@
+version: '5'
+services:
+  giropops-senhas:
+    image: cesarsantos96/giropops-senhas-assinada:1.0
+    ports:
+      - "5000:5000"
+    networks:
+      - giropops
+    environment:
+      REDIS_HOST: redis
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"
+    networks:
+      - giropops
+
+
+networks:
+  giropops:
+    driver: bridge
